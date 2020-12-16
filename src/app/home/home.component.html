@@ -1,0 +1,62 @@
+﻿<div class="container">
+	<br>
+    <figure class="text-center">
+      <h1> Order List </h1>
+    </figure>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="responsive">
+      <button id="Settings" type="button" class="btn btn-dark me-md-4">Settings</button>
+    </div>
+    <ul class="nav nav-tabs nav-pills">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Open</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Fulfilled</a>
+      </li>
+    </ul>
+
+	<div class="table-responsive" style="text-align: center">
+	  <table class="table table-striped table-bordered table-hover table-condensed" style="word-break:break-all; word-wrap:break-all;">
+		<thead>
+		  <tr>
+			<th>
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            </th>
+			<th>Order ID</th>
+			<th>Order Date</th>
+			<th>Customer</th>
+			<th>Products</th>
+		  </tr>
+		</thead>
+
+		<tbody *ngFor="let order of orders">
+		  <tr class="">
+			<td>
+			  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
+			</td>
+			<td>{{order.orderid}}</td>
+			<td>{{order.orderdate}}</td>
+			<td>{{order.customer}}</td>
+			<td>
+              <span class="badge bg-primary">GM</span>
+              <span class="badge bg-secondary">GC</span>
+              <span class="badge bg-success">F1</span>
+            </td>
+		  </tr>
+		</tbody>
+	  </table>
+</div>
+
+<nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+</nav>
+
+<div style="text-align: right">
+  <button type="button" class="btn btn-primary go" id="Go" (click)="goBundle()">Go</button>
+</div>

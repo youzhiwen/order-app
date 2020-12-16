@@ -1,0 +1,26 @@
+﻿<!-- nav -->
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+	<div class="container-fluid">
+	  <a class="navbar-brand" href="/">Dr Bugs Popcorn</a>
+	  <ul class="navbar-nav px-3">
+		<li class="nav-item text-nowrap">
+		  <a class="nav-link" (click)="logout()"></a>
+		</li>
+	  </ul>
+	</div>
+</nav>
+
+<!-- main app container -->
+<div class="jumbotron">
+	<alert></alert>
+	<router-outlet></router-outlet>
+</div>
+
+<!-- credits -->
+<div class="text-center">
+	<footer class="footer text-center">
+		<div class="container">
+		  <p class="text-muted big mb-0">&copy; 2020, Dr Bugs Popcorn</p>
+		</div>
+	</footer>
+</div>
