@@ -1,1 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+.small-box {
+    height: 5rem;
+    width: 5rem;
+    border: 1px solid black;
+    background-color: grey;
+
+  }
+
+  .large-box {
+    height: 6rem;
+    width: 6rem;
+    border: 1px solid black;
+    background-color: grey;
+  }
+
+  .title-text {
+    text-align: center;
+  }
+
+  .square-text {
+    text-align: center;
+    padding-top: 30%;
+    color: white;
+  }
+  .go {
+    width: 10rem;
+  }
+  .courier {
+    width: 5rem;
+  }
+
+  .return-button{
+    hight: 100px;
+    width: 100px;
+    position: absolute;
+    left:50px;
+  }
+  .skip-button{
+    hight: 80px;
+    width: 80px;
+  }
+
+.form{
+  width:200px;
+}
+
+.quantity{
+  width:100px;
+}
+
+.box{
+visibility: hidden;
+}
+
+.go{
+    width: 10rem;
+}
