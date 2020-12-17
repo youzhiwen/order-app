@@ -8,10 +8,10 @@
     </div>
     <ul class="nav nav-tabs nav-pills">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Open</a>
+        <a class="nav-link active" aria-current="page" href="/home" (click)="getNewOrders()">Open</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Fulfilled</a>
+        <a class="nav-link" href="#" (click)="getFulfilled()">Fulfilled</a>
       </li>
     </ul>
 
@@ -20,7 +20,7 @@
 		<thead>
 		  <tr>
 			<th>
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
             </th>
 			<th>Order ID</th>
 			<th>Order Date</th>
@@ -30,7 +30,7 @@
 		</thead>
 
 		<tbody *ngFor="let order of orders">
-		  <tr class="">
+		  <tr>
 			<td>
 			  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
 			</td>
