@@ -47,31 +47,36 @@ export class HomeComponent implements OnInit, OnDestroy {
 			new Order(
 				5001,
 				'02/12/2020',
-				'PaknSave Christchurch',				
+				'PaknSave Christchurch',
+				'Open',				
 				['GM', 'GC', 'F1']
 			),
 			new Order(
 				5002,
 				'02/12/2020',
-				'New World Christchurch',				
+				'New World Christchurch',
+				'Open',					
 				['GM', 'GC']
 			),
 			new Order(
 				5003,
 				'02/12/2020',
-				'Paknsave Auckland',				
+				'Paknsave Auckland',
+				'fulfilled',					
 				['GM', 'GC', 'F1']
 			),
 			new Order(
 				5004,
 				'02/12/2020',
-				'New World Auckland',				
+				'New World Auckland',
+				'Open',				
 				['GM', 'GC']
 			),
 			new Order(
 				5005,
 				'02/12/2020',
-				'PaknSave Wellington',				
+				'PaknSave Wellington',
+				'fulfilled',					
 				['GM', 'F1']
 			)
 		];
