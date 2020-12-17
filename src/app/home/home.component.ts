@@ -36,6 +36,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 	
 	goBundle() {        
         this.router.navigate(['/bundle']);
+	}
+	getNewOrders() {        
+        this.router.navigate(['/home']);
     }
 	
 	//load all open orders from server
@@ -44,26 +47,32 @@ export class HomeComponent implements OnInit, OnDestroy {
 			new Order(
 				5001,
 				'02/12/2020',
-				'Paknsave Christchurch',				
+				'PaknSave Christchurch',				
 				['GM', 'GC', 'F1']
 			),
 			new Order(
-				5001,
+				5002,
 				'02/12/2020',
 				'New World Christchurch',				
 				['GM', 'GC']
 			),
 			new Order(
-				5002,
+				5003,
 				'02/12/2020',
 				'Paknsave Auckland',				
 				['GM', 'GC', 'F1']
 			),
 			new Order(
-				5002,
+				5004,
 				'02/12/2020',
 				'New World Auckland',				
 				['GM', 'GC']
+			),
+			new Order(
+				5005,
+				'02/12/2020',
+				'PaknSave Wellington',				
+				['GM', 'F1']
 			)
 		];
 	}
