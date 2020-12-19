@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     currentUserSubscription: Subscription;
     users: User[] = [];
 	orders: Order[] = [];
+	isOpen = true;
+	checklist:any;
 
     constructor(
 	    private router: Router,
@@ -25,7 +27,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.loadAllOpenOrder();		
+        this.getOpenOrders();		
     }
 
     ngOnDestroy() {
@@ -33,16 +35,66 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.currentUserSubscription.unsubscribe();
     }
    
+	checkUncheckAll() {
+		for (var i = 0; i < this.checklist.length; i++) {
+		  
+		}
+		
+	  }
 	
 	goBundle() {        
         this.router.navigate(['/bundle']);
 	}
-	getNewOrders() {        
-        this.router.navigate(['/home']);
-    }
+
+	getOpenOrders() {        
+		this.isOpen = true;
+        this.orders = [
+			new Order(
+				5001,
+				'02/12/2020',
+				'PaknSave Christchurch',
+				'Open',				
+				['GM', 'GC', 'F1']
+			),
+			new Order(
+				5002,
+				'02/12/2020',
+				'New World Christchurch',
+				'Open',					
+				['GM', 'GC']
+			),
+			new Order(
+				5004,
+				'02/12/2020',
+				'New World Auckland',
+				'Open',				
+				['GM', 'GC']
+			)
+		];
+	}
+	
+	getFulfilledOrders(){
+		this.isOpen = false;
+		this.orders = [
+			new Order(
+				5003,
+				'02/12/2020',
+				'Paknsave Auckland',
+				'fulfilled',					
+				['GM', 'GC', 'F1']
+			),
+			new Order(
+				5005,
+				'02/12/2020',
+				'PaknSave Wellington',
+				'fulfilled',					
+				['GM', 'F1']
+			)
+		];
+	}
 	
 	//load all open orders from server
-	private loadAllOpenOrder(){
+	getAllOrders(){
 		this.orders = [
 			new Order(
 				5001,
