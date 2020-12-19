@@ -46,52 +46,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.router.navigate(['/bundle']);
 	}
 
-	getOpenOrders() {        
-		this.isOpen = true;
-        this.orders = [
-			new Order(
-				5001,
-				'02/12/2020',
-				'PaknSave Christchurch',
-				'Open',				
-				['GM', 'GC', 'F1']
-			),
-			new Order(
-				5002,
-				'02/12/2020',
-				'New World Christchurch',
-				'Open',					
-				['GM', 'GC']
-			),
-			new Order(
-				5004,
-				'02/12/2020',
-				'New World Auckland',
-				'Open',				
-				['GM', 'GC']
-			)
-		];
-	}
-	
-	getFulfilledOrders(){
-		this.isOpen = false;
-		this.orders = [
-			new Order(
-				5003,
-				'02/12/2020',
-				'Paknsave Auckland',
-				'fulfilled',					
-				['GM', 'GC', 'F1']
-			),
-			new Order(
-				5005,
-				'02/12/2020',
-				'PaknSave Wellington',
-				'fulfilled',					
-				['GM', 'F1']
-			)
-		];
-	}
 	
 	//load all open orders from server
 	getAllOrders(){
