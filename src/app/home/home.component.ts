@@ -16,6 +16,11 @@ export class HomeComponent implements OnInit, OnDestroy {
 	isOpen = true;
 	checklist:any;
 
+	page = 1;
+    count = 0;
+    tableSize = 7;
+    tableSizes = [3, 6, 9, 12];
+
     constructor(
 	    private router: Router,
         private authenticationService: AuthenticationService,
@@ -46,6 +51,35 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.router.navigate(['/bundle']);
 	}
 
+	getOpenOrders() {        
+		this.isOpen = true;
+		this.orders = [];
+		for(var i=0; i<10; i++){
+			var order = new Order(
+				i,
+				'02/12/2020',
+				'PaknSave Christchurch',
+				'Open',				
+				['GM', 'GC', 'F1']
+			);
+			this.orders.push(order);
+		}
+	}
+	
+	getFulfilledOrders(){
+		this.isOpen = false;
+		this.orders = [];
+		for(var i=0; i<10; i++){
+			var order = new Order(
+				i,
+				'02/12/2020',
+				'PaknSave Auckland',
+				'fulfilled',				
+				['GM', 'GC', 'F1']
+			);
+			this.orders.push(order);
+		}
+	}
 	
 	//load all open orders from server
 	getAllOrders(){
@@ -88,4 +122,13 @@ export class HomeComponent implements OnInit, OnDestroy {
 		];
 	}
    
+	onTableDataChange(event){
+		this.page = event;		
+	}  
+
+	onTableSizeChange(event): void {
+		this.tableSize = event.target.value;
+		this.page = 1;
+		this.getOpenOrders();		
+	  }  
 }
