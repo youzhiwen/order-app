@@ -1,4 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+/* bundle image size */
+.courier {
+  width: 5rem;
+}
 .small-box {
     height: 5rem;
     width: 5rem;
@@ -14,30 +18,19 @@
     background-color: grey;
   }
 
-  .title-text {
-    text-align: center;
-  }
-
   .square-text {
     text-align: center;
     padding-top: 30%;
     color: white;
   }
-  .go {
-    width: 10rem;
-  }
-  .courier {
-    width: 5rem;
-  }
 
+  /* bundle packs */
   .return-button{
-    hight: 100px;
     width: 100px;
     position: absolute;
     left:50px;
   }
   .skip-button{
-    hight: 80px;
     width: 80px;
   }
 
@@ -52,7 +45,21 @@
 .box{
 visibility: hidden;
 }
+/* title section */
+  .title-text {
+    text-align: center;
+  }
+
+  /* orderlist button styles */
 
 .go{
     width: 10rem;
+}
+
+.cancel{
+  width: 10rem;
+}
+
+.reprint{
+  width: 10rem;
 }
