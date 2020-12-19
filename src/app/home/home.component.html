@@ -32,7 +32,10 @@
 		  </tr>
 		</thead>
 
-		<tbody *ngFor="let order of orders">
+		<tbody *ngFor="let order of orders | paginate : {
+      itemsPerPage: tableSize,
+      currentPage: page,
+      totalItems: count};">
 		  <tr>
 			<td *ngIf='isOpen'>
 			  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
@@ -50,18 +53,17 @@
             </td>
 		  </tr>
 		</tbody>
-	  </table>
+    </table>
+    
+    <div class="d-flex justify-content-left">
+        <pagination-controls 
+          responsive="true" 
+          previousLabel="Prev" 
+          nextLabel="Next" 
+          (pageChange)="onTableDataChange($event)">
+        </pagination-controls>
+    </div>
 </div>
-
-<nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-      </ul>
-</nav>
 
 <div style="text-align: right" *ngIf='isOpen'>
   <button type="button" class="btn btn-primary go" id="Go" (click)="goBundle()">Go</button>
