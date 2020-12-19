@@ -39,7 +39,12 @@ export class HomeComponent implements OnInit, OnDestroy {
 	}
 	getNewOrders() {        
         this.router.navigate(['/home']);
-    }
+	}
+	
+	getFulfilled()
+	{        
+        this.router.navigate(['/home']);
+	}
 	
 	//load all open orders from server
 	private loadAllOpenOrder(){
