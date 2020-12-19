@@ -8,14 +8,15 @@ import { fakeBackendProvider } from './_helpers';
 
 import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AlertComponent } from './_components';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
-import { RegisterComponent } from './register';;
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { BundleComponent } from './bundle/bundle.component'
+import { RegisterComponent } from './register';
+import { BundleComponent } from './bundle/bundle.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
     imports: [
@@ -23,14 +24,16 @@ import { BundleComponent } from './bundle/bundle.component'
         ReactiveFormsModule,
         HttpClientModule,
         routing,
-        NgbModule
+        NgbModule,
+        NgxPaginationModule
     ],
     declarations: [
         AppComponent,
         AlertComponent,
         HomeComponent,
         LoginComponent,
-        RegisterComponent,
+        RegisterComponent
+,
         BundleComponent
     ],
     providers: [
