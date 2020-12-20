@@ -1,43 +1,29 @@
-﻿import { Component, OnInit, OnDestroy } from '@angular/core';
+﻿import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
-import { User } from '@app/_models';
 import { Order } from '@app/_models';
-import { UserService, AuthenticationService } from '@app/_services';
 
 @Component({ templateUrl: 'home.component.html' })
-export class HomeComponent implements OnInit, OnDestroy {
-    currentUser: User;
-    currentUserSubscription: Subscription;
-    users: User[] = [];
+export class HomeComponent implements OnInit {
+
 	orders: Order[] = [];
 	isOpenOrder = true;
 	checklist:any;
+	selectedOrderID:number;
 
 	page = 1;
     count = 0;
-    tableSize = 7;
-    tableSizes = [3, 6, 9, 12];
+    tableSize = 50;
 
-    constructor(
-	    private router: Router,
-        private authenticationService: AuthenticationService,
-        private userService: UserService
-    ) {
-        this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
-            this.currentUser = user;
-        });		
+    constructor(private router: Router, private modalService: NgbModal, private el:ElementRef) {
+        
     }
 
     ngOnInit() {
         this.getOpenOrders();		
-    }
-
-    ngOnDestroy() {
-        // unsubscribe to ensure no memory leaks
-        this.currentUserSubscription.unsubscribe();
     }
    
 	checkUncheckAll() {
@@ -54,9 +40,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 	getOpenOrders() {        
 		this.isOpenOrder = true;
 		this.orders = [];
-		for(var i=0; i<10; i++){
+		for(var i=0; i<100; i++){
 			var order = new Order(
-				i,
+				1000+i,
 				'02/12/2020',
 				'PaknSave Christchurch',
 				'Open',				
@@ -71,7 +57,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 		this.orders = [];
 		for(var i=0; i<10; i++){
 			var order = new Order(
-				i,
+				2000+i,
 				'02/12/2020',
 				'PaknSave Auckland',
 				'fulfilled',				
@@ -81,8 +67,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 		}
 	}
 
-	cancelOrder(){
-		
+	cancelOrder(content){
+		this.modalService.open(content);
+		this.selectedOrderID = 1001;
+		//console.log(this.element.nativeElement)
 	}
    
 	onTableDataChange(event){
