@@ -80,6 +80,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 			this.orders.push(order);
 		}
 	}
+
+	cancelOrder(){
+		
+	}
    
 	onTableDataChange(event){
 		this.page = event;		

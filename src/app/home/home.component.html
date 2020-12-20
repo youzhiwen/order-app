@@ -65,12 +65,12 @@
     </div>
 </div>
 
-<div style="text-align: right" *ngIf='isOpen'>
+<div style="text-align: right" *ngIf='isOpenOrder'>
   <button type="button" class="btn btn-primary go" id="Go" (click)="goBundle()">Go</button>
 </div>
-<div style="text-align: right" *ngIf='!isOpen'>
+<div style="text-align: right" *ngIf='!isOpenOrder'>
   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <button type="button" class="btn btn-danger me-md-2" id="cancel" (click)="delOrder()">Cancel</button>    
+    <button type="button" class="btn btn-danger me-md-2" id="cancel" (click)="cancelOrder()">Cancel</button>    
     <button type="button" class="btn btn-info me-md-2" id="reprint" (click)="printOrder()">Reprint</button>
   </div>
 </div>
