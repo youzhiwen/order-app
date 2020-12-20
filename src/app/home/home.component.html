@@ -8,10 +8,10 @@
     </div>
     <ul class="nav nav-tabs nav-pills">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page"href="#" (click)="getOpenOrders()" [ngClass]="{'active': isOpen}">Open</a>
+        <a class="nav-link active" aria-current="page" href="#" (click)="getOpenOrders()" [ngClass]="{'active': isOpenOrder}">Open</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" (click)="getFulfilledOrders()" [ngClass]="{'active': !isOpen}">Fulfilled</a>
+        <a class="nav-link" href="#" (click)="getFulfilledOrders()" [ngClass]="{'active': !isOpenOrder}">Fulfilled</a>
       </li>
     </ul>
 
@@ -19,10 +19,10 @@
 	  <table class="table table-striped table-bordered table-hover table-condensed" style="word-break:break-all; word-wrap:break-all;">
 		<thead>
 		  <tr>
-			<th *ngIf='isOpen'>
+			<th *ngIf='isOpenOrder'>
         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
       </th>
-      <th *ngIf='!isOpen'>
+      <th *ngIf='!isOpenOrder'>
           <input class="form-check-input" type="radio" name="flexRadioDefault" value="" id="flexRadioDefault" disabled>
       </th>
 			<th>Order ID</th>
@@ -37,10 +37,10 @@
       currentPage: page,
       totalItems: count};">
 		  <tr>
-			<td *ngIf='isOpen'>
+			<td *ngIf='isOpenOrder'>
 			  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
       </td>
-      <td *ngIf='!isOpen'>
+      <td *ngIf='!isOpenOrder'>
           <input class="form-check-input" type="radio" name="flexRadioDefault" value="" id="flexRadioDefault1">
         </td>
 			<td>{{order.orderid}}</td>

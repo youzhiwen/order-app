@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     currentUserSubscription: Subscription;
     users: User[] = [];
 	orders: Order[] = [];
-	isOpen = true;
+	isOpenOrder = true;
 	checklist:any;
 
 	page = 1;
@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 	}
 
 	getOpenOrders() {        
-		this.isOpen = true;
+		this.isOpenOrder = true;
 		this.orders = [];
 		for(var i=0; i<10; i++){
 			var order = new Order(
@@ -67,7 +67,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 	}
 	
 	getFulfilledOrders(){
-		this.isOpen = false;
+		this.isOpenOrder = false;
 		this.orders = [];
 		for(var i=0; i<10; i++){
 			var order = new Order(
@@ -79,47 +79,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 			);
 			this.orders.push(order);
 		}
-	}
-	
-	//load all open orders from server
-	getAllOrders(){
-		this.orders = [
-			new Order(
-				5001,
-				'02/12/2020',
-				'PaknSave Christchurch',
-				'Open',				
-				['GM', 'GC', 'F1']
-			),
-			new Order(
-				5002,
-				'02/12/2020',
-				'New World Christchurch',
-				'Open',					
-				['GM', 'GC']
-			),
-			new Order(
-				5003,
-				'02/12/2020',
-				'Paknsave Auckland',
-				'fulfilled',					
-				['GM', 'GC', 'F1']
-			),
-			new Order(
-				5004,
-				'02/12/2020',
-				'New World Auckland',
-				'Open',				
-				['GM', 'GC']
-			),
-			new Order(
-				5005,
-				'02/12/2020',
-				'PaknSave Wellington',
-				'fulfilled',					
-				['GM', 'F1']
-			)
-		];
 	}
    
 	onTableDataChange(event){
