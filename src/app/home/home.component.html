@@ -38,12 +38,12 @@
       itemsPerPage: tableSize,
       currentPage: page,
       totalItems: count};">
-		  <tr>
+		  <tr (click)="clicked(order)">
 			<td *ngIf='isOpenOrder'>
 			  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
       </td>
       <td *ngIf='!isOpenOrder'>
-          <input class="form-check-input" type="radio" name="flexRadioDefault" value="" id="flexRadioDefault">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" value="" id="flexRadioDefault" #fulfilledOrder>
         </td>
 			<td>{{order.orderid}}</td>
 			<td>{{order.orderdate}}</td>
