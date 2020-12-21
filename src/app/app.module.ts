@@ -16,7 +16,8 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { BundleComponent } from './bundle/bundle.component';
-import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';;
+import { PacksComponent } from './packs/packs.component'
 
 @NgModule({
     imports: [
@@ -32,9 +33,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
         AlertComponent,
         HomeComponent,
         LoginComponent,
-        RegisterComponent
-,
-        BundleComponent
+        RegisterComponent,
+        BundleComponent,
+        PacksComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

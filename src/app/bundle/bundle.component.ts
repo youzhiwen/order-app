@@ -11,7 +11,7 @@ export class BundleComponent implements OnInit {
   ngOnInit(): void {
   }
 	goBundle() {        
-    this.router.navigate(['/bundle']);
+    this.router.navigate(['/packs']);
 }
   OnClickReturnModal(returnBundle){
     this.modalService.open(returnBundle); 
