@@ -23,27 +23,44 @@
     padding-top: 30%;
     color: white;
   }
+/*products & customer table header */
+.products, customer{
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
 
   /* bundle packs */
   .return-button{
-    width: 100px;
-    position: absolute;
-    left:50px;
+    width: 80px;
+    position: relative;
+    left:0px;
   }
   .skip-button{
-    width: 80px;
+    width: 70px;
   }
 
 .form{
   width:200px;
 }
-
-.quantity{
+/*packs-area*/
+.packs-area{
+  padding-top:40px;
+}
+.input-quantity{
   width:100px;
+  font-size: smaller;
 }
 
 .box{
 visibility: hidden;
+}
+
+.form-label{
+  font-size:smaller;
+}
+
+.options{
+  font-size:smaller;
 }
 /* title section */
   .title-text {
@@ -62,4 +79,13 @@ visibility: hidden;
 
 .reprint{
   width: 10rem;
+}
+ /* footer styles */
+
+.footer {
+  font-size: smaller;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color:#fff;
 }
