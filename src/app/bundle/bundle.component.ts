@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 @Component({selector: 'app-bundle',templateUrl: './bundle.component.html'})
 export class BundleComponent implements OnInit {
   
@@ -10,8 +11,8 @@ export class BundleComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  OnClickReturnModal(){
-    this.modalService.open; 
+  OnClickReturnModal(returnBundle){
+    this.modalService.open(returnBundle); 
   }
   returnToOrderList() {
       this.router.navigate(['/home']);

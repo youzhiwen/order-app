@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
 
 	page = 1;
     count = 0;
-    tableSize = 50;
+    tableSize = 10;
 
     constructor(private router: Router, private modalService: NgbModal) {
         

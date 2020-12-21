@@ -2,7 +2,7 @@
     <br>
     <figure class="text-center">
       <div>
-        <h1><button id="return" type="button" class="btn btn-default return-button" data-toggle="modal" data-target="#returnModal" (click)="OnClickReturnModal()">
+        <h1><button id="return" type="button" class="btn btn-default return-button" data-toggle="modal" data-target="#returnModal" (click)="OnClickReturnModal(returnBundle)">
           <img src="assets/images/arrow.png"  class="img-fluid" alt="return"/>
           </button>
           Bundle 1
@@ -82,7 +82,7 @@
     </div>
     </div>
     
-    <ng-template #return let-modal>
+    <ng-template #returnBundle let-modal>
       <div class="modal-header" id="returnModal">
         <h4 class="modal-title" id="returnModalLabel">Hi there!</h4>
       </div>
@@ -90,7 +90,7 @@
         <p>Are you sure to return to main page? Current order data will not be saved.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" (click)="returnToOrderList()">Yes</button>
+        <button type="button" class="btn btn-danger" (click)="returnToOrderList();modal.close('Ok click')">Yes</button>
         <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">No</button>    
       </div>
     </ng-template>
