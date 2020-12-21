@@ -2,7 +2,7 @@
     <br>
     <figure class="text-center">
       <div>
-        <h1><button id="return" type="button" class="btn btn-default return-button" data-toggle="modal" data-target="#returnModal" (click)="returnToOrderList()">
+        <h1><button id="return" type="button" class="btn btn-default return-button" data-toggle="modal" data-target="#returnModal" (click)="OnClickReturnModal()">
           <img src="assets/images/arrow.png"  class="img-fluid" alt="return"/>
           </button>
           Bundle 1
@@ -13,72 +13,43 @@
       </div>
     </figure>
 
-    <div class="modal fade" id="returnModal" tabindex="-1" aria-labelledby="returnModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <h5 class="modal-title" id="returnModalLabel">Alert Messages</h5>
-            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <!-- Modal body -->
-          <div id="modal-body" class="modal-body">
-            Are you sure to return to main page? Current order data will not be saved.
-          </div>
-
-          <!-- Modal footer -->
-          <div class="modal-footer">
-            <button id="yes" type="button" class="btn btn-primary">Yes</button>
-            <button id="no" type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-          </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col m-auto">
+          <h3 class="title-text">Products</h3>
+        </div>
+        <div class="col m-auto">
+          <h3 class="title-text">Customer</h3>
         </div>
       </div>
-    </div>
-
-    <div class="table-responsive" style="text-align: center">
-      <table class="table table-borderless" style="word-break:break-all; word-wrap:break-all;">
-        <thead>
-          <tr>
-            <th>
-              <h3>Products</h3>
-            </th>
-            <th>
-              <h3>Customer</h3>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <div class="row">
-                <div class="col-md-6 m-auto">
-                  <div class="container-fluid">
-                    <div class="col-md-12 m-auto small-box">
-                      <h3 class="square-text">GB</h3>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12 m-auto small-box">
-                      <h3 class="square-text">GB</h3>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12 m-auto large-box">
-                      <h3 class="square-text">GC</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </td>
-            <td>
-              <div class="col-md-6 m-auto">
-                <h5 class="title-text">PaknSave Riccarton</h5>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="row">
+        <div class="col m-auto">
+          <div class="col m-auto small-box">
+            <h3 class="square-text">GB</h3>
+          </div>
+        </div>
+        <div class="col m-auto">
+          <h5 class="title-text">PaknSave Riccarton</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col m-auto">
+          <div class="col m-auto small-box">
+            <h3 class="square-text">GM</h3>
+          </div>
+        </div>
+        <div class="col m-auto">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col m-auto">
+          <div class="col m-auto large-box">
+            <h3 class="square-text">F1</h3>
+          </div>
+        </div>
+        <div class="col m-auto">
+        </div>
+      </div>
     </div>
 
     <div style="text-align: right">
@@ -110,3 +81,16 @@
       </div>
     </div>
     </div>
+    
+    <ng-template #return let-modal>
+      <div class="modal-header" id="returnModal">
+        <h4 class="modal-title" id="returnModalLabel">Hi there!</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure to return to main page? Current order data will not be saved.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="returnToOrderList()">Yes</button>
+        <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">No</button>    
+      </div>
+    </ng-template>
