@@ -2,7 +2,7 @@
     <br>
     <figure class="text-center">
       <div>
-        <h1><button id="return" type="button" class="btn btn-default return-button" data-toggle="modal" data-target="#returnModal" (click)="OnClickReturnModal(returnBundle)">
+        <h1><button id="return" type="button" class="btn btn-default return-button" (click)="OnClickReturnModal(returnBundle)">
           <img src="assets/images/arrow.png"  class="img-fluid" alt="return"/>
           </button>
           Bundle 1
@@ -54,32 +54,11 @@
 
     <div style="text-align: right">
       <button type="button" class="btn btn-primary go disabled" id="Go">Go</button>
-      <button type="button" class="btn btn-default btn-lg skip-button" data-toggle="modal" data-target="#skipModal">
+      <button type="button" class="btn btn-default btn-lg skip-button" (click)="OnClickSkip(skipOrders)">
         <img src="assets/images/next.png" class="img-fluid" alt="skip">
       </button>
     </div>
-    <div class="modal fade" id="skipModal" tabindex="-1" aria-labelledby="skipModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
 
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <h5 class="modal-title" id="skipModalLabel">Alert Messages</h5>
-            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <!-- Modal body -->
-          <div id="modal-body" class="modal-body">
-            Are you sure to skip to the next order? Current order data will not be saved.
-          </div>
-
-          <!-- Modal footer -->
-          <div class="modal-footer">
-            <button id="yes" type="button" class="btn btn-primary">Yes</button>
-            <button id="no" type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-          </div>
-        </div>
-      </div>
-    </div>
     </div>
     
     <ng-template #returnBundle let-modal>
@@ -94,3 +73,17 @@
         <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">No</button>    
       </div>
     </ng-template>
+
+    <ng-template #skipOrders let-modal>
+      <div class="modal-header" id="skipModal">
+        <h4 class="modal-title" id="skipModalLabel">Hi there!</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure to skip to the next order? Current order data will not be saved.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="goBundle();modal.close('Ok click')">Yes</button>
+        <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">No</button>    
+      </div>
+    </ng-template>
+

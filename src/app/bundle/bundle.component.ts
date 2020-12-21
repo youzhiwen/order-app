@@ -10,9 +10,15 @@ export class BundleComponent implements OnInit {
   }
   ngOnInit(): void {
   }
-  
+	goBundle() {        
+    this.router.navigate(['/bundle']);
+}
   OnClickReturnModal(returnBundle){
     this.modalService.open(returnBundle); 
+  }
+
+  OnClickSkip(skipOrders){
+    this.modalService.open(skipOrders); 
   }
   returnToOrderList() {
       this.router.navigate(['/home']);
