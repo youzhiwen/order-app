@@ -65,28 +65,31 @@
           (pageChange)="onTableDataChange($event)">
         </pagination-controls>
     </div>
-</div>
 
 
-<div style="text-align: right" *ngIf='isOpenOrder'>
-  <button type="button" class="btn btn-primary go" id="Go" (click)="goBundle()">Go</button>
-</div>
-<div style="text-align: right" *ngIf='!isOpenOrder'>
-  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <button type="button" class="btn btn-danger me-md-2" id="cancel" (click)="cancelOrder(content)">Cancel</button>    
-    <button type="button" class="btn btn-info me-md-2" id="reprint" (click)="printOrder()">Reprint</button>
+    <div style="text-align: right" *ngIf='isOpenOrder'>
+    <button type="button" class="btn btn-primary go" id="Go" (click)="goBundle()">Go</button>
+    </div>
+    <div style="text-align: right" *ngIf='!isOpenOrder'>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-danger me-md-2" id="cancel" (click)="cancelOrder(content)">Cancel</button>    
+        <button type="button" class="btn btn-info me-md-2" id="reprint" (click)="printOrder()">Reprint</button>
+      </div>
+    </div>
   </div>
-</div>
 
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title">Hi there!</h4>
+
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Hi there!</h4>
+    </div>
+    <div class="modal-body">
+      <p>Are you sure to cancel order {{selectedOrderID}}? It cannot be undone.</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="modal.close('Ok click')">Yes</button>
+      <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">No</button>    
+    </div>
+  </ng-template>
   </div>
-  <div class="modal-body">
-    <p>Are you sure to cancel order {{selectedOrderID}}? It cannot be undone.</p>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-danger" (click)="modal.close('Ok click')">Yes</button>
-    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">No</button>    
-  </div>
-</ng-template>
