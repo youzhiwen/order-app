@@ -17,8 +17,10 @@ import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { BundleComponent } from './bundle/bundle.component';
 import { NgxPaginationModule } from 'ngx-pagination';;
-import { PacksComponent } from './packs/packs.component';
+import { PacksComponent } from './packs/packs.component'
+;
 import { SvgComponent } from './svg/svg.component'
+import { NgxSvgModule } from 'ngx-svg';
 
 @NgModule({
     imports: [
@@ -27,6 +29,7 @@ import { SvgComponent } from './svg/svg.component'
         HttpClientModule,
         routing,
         NgbModule,
+        NgxSvgModule,
         NgxPaginationModule
     ],
     declarations: [
@@ -36,7 +39,8 @@ import { SvgComponent } from './svg/svg.component'
         LoginComponent,
         RegisterComponent,
         BundleComponent,
-        PacksComponent,
+        PacksComponent
+,
         SvgComponent
     ],
     providers: [
