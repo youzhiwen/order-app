@@ -1,0 +1,7 @@
+<!--use a loop to draw relevant SVG-->
+<svg class= "one-B" viewBox="0 0 468 444">
+  <g>
+    <rect x="114" y="100" width="240" height="210" [attr.fill]="fillColor" (click)="changeColor()" />
+    <text class="text" x="200" y="200">B150</text>
+  </g>
+</svg>

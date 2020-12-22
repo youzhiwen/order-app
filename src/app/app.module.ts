@@ -17,7 +17,8 @@ import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { BundleComponent } from './bundle/bundle.component';
 import { NgxPaginationModule } from 'ngx-pagination';;
-import { PacksComponent } from './packs/packs.component'
+import { PacksComponent } from './packs/packs.component';
+import { SvgComponent } from './svg/svg.component'
 
 @NgModule({
     imports: [
@@ -35,7 +36,8 @@ import { PacksComponent } from './packs/packs.component'
         LoginComponent,
         RegisterComponent,
         BundleComponent,
-        PacksComponent
+        PacksComponent,
+        SvgComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

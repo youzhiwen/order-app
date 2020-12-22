@@ -23,12 +23,10 @@
     padding-top: 30%;
     color: white;
   }
-/*products & customer table header */
-.products, customer{
-  padding-top: 40px;
-  padding-bottom: 20px;
+/*text on boxes */
+.text{
+  font-size:x-large;
 }
-
   /* bundle packs */
   .return-button{
     width: 80px;
