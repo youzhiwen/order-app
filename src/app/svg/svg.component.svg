@@ -1,7 +1,8 @@
 <!--use a loop to draw relevant SVG-->
 <svg class= "one-B" viewBox="0 0 468 444">
-  <g>
-    <rect x="114" y="100" width="240" height="210" [attr.fill]="fillColor" (click)="changeColor()" />
-    <text class="text" x="200" y="200">B150</text>
+  <g id="one-B">
+    <rect x="30%" y="30%" width="160" height="140" [attr.fill]="fillColor" (click)="changeColor()" />
+    <text class="text" x="45%" y="45%" dy=".3em" test-anchor="middle">B150</text>
   </g>
+  <use xlink:href="#one-B" transform="translate(0,140)"/>
 </svg>
