@@ -37,13 +37,13 @@
 		<tbody *ngFor="let order of orders | paginate : {
       itemsPerPage: tableSize,
       currentPage: page,
-      totalItems: count};">
-		  <tr (click)="clicked(order)">
+      totalItems: count}; let i = index">
+		  <tr (click)="clicked(order, i)">
 			<td *ngIf='isOpenOrder'>
-			  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+			  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault{{i}}">
       </td>
       <td *ngIf='!isOpenOrder'>
-          <input class="form-check-input" type="radio" name="flexRadioDefault" value="" id="flexRadioDefault" #fulfilledOrder>
+          <input class="form-check-input" type="radio" name="flexRadioDefault" value="" id="flexRadioDefault{{i}}" #fulfilledOrder{{i}}>
         </td>
 			<td>{{order.orderid}}</td>
 			<td>{{order.orderdate}}</td>
@@ -73,7 +73,7 @@
     <div style="text-align: right" *ngIf='!isOpenOrder'>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <button type="button" class="btn btn-danger me-md-2" id="cancel" (click)="cancelOrder(content)">Cancel</button>    
-        <button type="button" class="btn btn-info me-md-2" id="reprint" (click)="printOrder()">Reprint</button>
+        <button type="button" class="btn btn-info me-md-2" id="reprint" (click)="printOrder(print)">Reprint</button>
       </div>
     </div>
   </div>
@@ -92,4 +92,18 @@
       <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">No</button>    
     </div>
   </ng-template>
+
+  <ng-template #print let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Hi there!</h4>
+    </div>
+    <div class="modal-body">
+      <p>Are you sure to reprint order {{selectedOrderID}}? </p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="modal.close('Ok click')">Yes</button>
+      <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">No</button>    
+    </div>
+  </ng-template>
+  
   </div>
