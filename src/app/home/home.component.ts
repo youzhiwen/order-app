@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
@@ -13,32 +13,37 @@ export class HomeComponent implements OnInit {
 
 	element: HTMLInputElement;
 
-	orders: Order[] = [];
+	orderList: Order[] = [];
+	checkedOrderList: any;
 	isOpenOrder = true;
 	checklist:any;
 	selectedOrderID:number;
 	selectedOrder: Order;
+	isMasterSel:boolean;
 
 	page = 1;
     count = 0;
     tableSize = 10;
 
     constructor(private router: Router, private modalService: NgbModal, private http: HttpClient) {
-        
+        this.isMasterSel = false;
     }
 
     ngOnInit() {
         this.getOpenOrders();		
 	}
 	
-	clicked(order: Order, i: number){
+	clickedRow(order: Order, i: number){
 		this.selectedOrder = order;
 		console.log(this.selectedOrder)
 
 		if(this.isOpenOrder){
 			this.element = document.getElementById('flexCheckDefault'+i) as HTMLInputElement;
 			this.element.checked = this.element.checked?false:true;
-			console.log(this.element.checked);
+			this.orderList[i].isSelected = this.element.checked;
+			this.getCheckedOrderList();
+			console.log(this.checkedOrderList);
+
 		}else{
 			this.element = document.getElementById('flexRadioDefault'+i) as HTMLInputElement;
 			this.element.checked = true;
@@ -47,11 +52,28 @@ export class HomeComponent implements OnInit {
 	}
    
 	checkUncheckAll() {
-		for (var i = 0; i < this.checklist.length; i++) {
-		  
+		for (var i = 0; i < this.orderList.length; i++) {
+			this.orderList[i].isSelected = this.isMasterSel;
 		}
-		
-	  }
+		this.getCheckedOrderList();		
+		console.log(this.checkedOrderList);
+	}
+
+	isAllSelected() {
+		this.isMasterSel = this.orderList.every(function(order:any) {
+			return order.isSelected == true;
+		  })
+		this.getCheckedOrderList();
+	}
+
+	getCheckedOrderList(){
+		this.checkedOrderList = [];
+		for (var i = 0; i < this.orderList.length; i++) {
+		  if(this.orderList[i].isSelected)
+		  this.checkedOrderList.push(this.orderList[i]);
+		}
+		this.checkedOrderList = JSON.stringify(this.checkedOrderList);
+	}
 	
 	goBundle() {        
         this.router.navigate(['/bundle']);
@@ -59,8 +81,8 @@ export class HomeComponent implements OnInit {
 
 	getOpenOrders() {        
 		this.isOpenOrder = true;
-		this.orders = [];
-		for(var i=0; i<100; i++){
+		this.orderList = [];
+		for(var i=0; i<11; i++){
 			var order = new Order(
 				1000+i,
 				'02/12/2020',
@@ -68,13 +90,13 @@ export class HomeComponent implements OnInit {
 				'Open',				
 				['GM', 'GC', 'F1']
 			);
-			this.orders.push(order);
+			this.orderList.push(order);
 		}
 	}
 	
 	getFulfilledOrders(){
 		this.isOpenOrder = false;
-		this.orders = [];
+		this.orderList = [];
 		for(var i=0; i<10; i++){
 			var order = new Order(
 				2000+i,
@@ -83,8 +105,25 @@ export class HomeComponent implements OnInit {
 				'fulfilled',				
 				['GM', 'GC', 'F1']
 			);
-			this.orders.push(order);
+			this.orderList.push(order);
 		}
+	}
+
+	displayProducts(product: string){
+		var productCSS = '';
+		switch(product){
+			case 'GM': 
+				productCSS = "badge bg-primary";
+				break;
+			case 'GC':
+				productCSS = "badge bg-secondary";
+				break;
+			case 'F1':
+				productCSS = "badge bg-success";
+				break;
+		}
+		console.log(productCSS);
+        return productCSS;
 	}
 
 	cancelOrder(content){

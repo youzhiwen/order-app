@@ -3,7 +3,8 @@
     orderdate: string;
 	customer: string;
 	status: string;
-    products: string[];
+	products: string[];
+	isSelected: boolean;
 	
 	constructor(orderid: number, orderdate: string, customer: string, status: string, products: string[]){
 		this.orderid = orderid;
@@ -11,5 +12,6 @@
 		this.customer = customer;
 		this.status = status;
 		this.products = products;
+		this.isSelected = false;
 	}
 }
