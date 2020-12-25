@@ -22,7 +22,7 @@
 		<thead>
 		  <tr>
 			<th *ngIf='isOpenOrder'>
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" [(ngModel)]="isMasterSel" value="" id="flexCheckDefault" (change)="checkUncheckAll()">
       </th>
       <th *ngIf='!isOpenOrder'>
           <input class="form-check-input" type="radio" name="flexRadioDefault" value="" id="flexRadioDefault" disabled>
@@ -34,25 +34,25 @@
 		  </tr>
 		</thead>
 
-		<tbody *ngFor="let order of orders | paginate : {
+		<tbody *ngFor="let order of orderList | paginate : {
       itemsPerPage: tableSize,
       currentPage: page,
       totalItems: count}; let i = index">
-		  <tr (click)="clicked(order, i)">
-			<td *ngIf='isOpenOrder'>
-			  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault{{i}}">
-      </td>
-      <td *ngIf='!isOpenOrder'>
-          <input class="form-check-input" type="radio" name="flexRadioDefault" value="" id="flexRadioDefault{{i}}" #fulfilledOrder{{i}}>
+		  <tr (click)="clickedRow(order, i)">
+        <td *ngIf='isOpenOrder'>
+          <input class="form-check-input" type="checkbox" [(ngModel)]="order.isSelected" value="{{order.orderid}}" id="flexCheckDefault{{i}}" (change)="isAllSelected()">
         </td>
-			<td>{{order.orderid}}</td>
-			<td>{{order.orderdate}}</td>
-			<td>{{order.customer}}</td>
-			<td>
-              <span class="badge bg-primary">GM</span>
-              <span class="badge bg-secondary">GC</span>
-              <span class="badge bg-success">F1</span>
-            </td>
+        <td *ngIf='!isOpenOrder'>
+            <input class="form-check-input" type="radio" name="flexRadioDefault" value="{{order.orderid}}" id="flexRadioDefault{{i}}" #fulfilledOrder{{i}}>
+          </td>
+        <td>{{order.orderid}}</td>
+        <td>{{order.orderdate}}</td>
+        <td>{{order.customer}}</td>
+        <td>
+          <span *ngFor="let product of order.products; let i = index" class="badge bg-primary">
+            {{product}}
+          </span>                
+        </td>
 		  </tr>
 		</tbody>
     </table>
@@ -68,7 +68,7 @@
 
 
     <div style="text-align: right" *ngIf='isOpenOrder'>
-    <button type="button" class="btn btn-primary go" id="Go" (click)="goBundle()">Go</button>
+    <button type="button" class="btn btn-primary go" id="Go" (click)="goBundle(checkedOrderList)">Go</button>
     </div>
     <div style="text-align: right" *ngIf='!isOpenOrder'>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">

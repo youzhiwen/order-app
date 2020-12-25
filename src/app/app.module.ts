@@ -2,6 +2,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
@@ -27,6 +29,7 @@ import { NgxSvgModule } from 'ngx-svg';
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
+        FormsModule,
         routing,
         NgbModule,
         NgxSvgModule,
