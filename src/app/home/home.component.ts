@@ -1,12 +1,13 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 import { Order } from '@app/_models';
+import { OrderService } from '@app/_services';
 
 @Component({ templateUrl: 'home.component.html' })
 export class HomeComponent implements OnInit {
@@ -25,7 +26,7 @@ export class HomeComponent implements OnInit {
     count = 0;
     tableSize = 10;
 
-    constructor(private router: Router, private modalService: NgbModal, private http: HttpClient) {
+    constructor(private router: Router, private modalService: NgbModal, private http: HttpClient, private orderService: OrderService) {
         this.isMasterSel = false;
     }
 
@@ -75,38 +76,28 @@ export class HomeComponent implements OnInit {
 		this.checkedOrderList = JSON.stringify(this.checkedOrderList);
 	}
 	
-	goBundle() {        
-        this.router.navigate(['/bundle']);
+	goBundle(checkedOrderList: any) {     
+
+        this.router.navigate(['/bundle'],{queryParams:checkedOrderList});
 	}
 
 	getOpenOrders() {        
 		this.isOpenOrder = true;
 		this.orderList = [];
-		for(var i=0; i<11; i++){
-			var order = new Order(
-				1000+i,
-				'02/12/2020',
-				'PaknSave Christchurch',
-				'Open',				
-				['GM', 'GC', 'F1']
-			);
-			this.orderList.push(order);
-		}
+		
+		this.orderService.getOpenOrders().subscribe(orders => {
+			this.orderList = orders;
+            console.log(this.orderList);
+		});
 	}
 	
 	getFulfilledOrders(){
 		this.isOpenOrder = false;
 		this.orderList = [];
-		for(var i=0; i<10; i++){
-			var order = new Order(
-				2000+i,
-				'02/12/2020',
-				'PaknSave Auckland',
-				'fulfilled',				
-				['GM', 'GC', 'F1']
-			);
-			this.orderList.push(order);
-		}
+		this.orderService.getAllFulfilledOrders().subscribe(orders => {
+			this.orderList = orders;
+            console.log(this.orderList);
+		});
 	}
 
 	displayProducts(product: string){
@@ -129,21 +120,19 @@ export class HomeComponent implements OnInit {
 	cancelOrder(content){
 		this.modalService.open(content);
 		this.selectedOrderID = this.selectedOrder.orderid;
-
-		//invoke cancelOrder api
-		this.http.get("https://jsonplaceholder.typicode.com/todos/1", {
-  			observe: "response"
-		})
-			.subscribe(res => {
-   				console.dir("Response: " + res.status);
-		});
+		
+		this.orderService.cancelOrder(this.selectedOrderID);
+		console.log(this.selectedOrderID + ",Cancel is done.");
 	}
 
 	printOrder(print){
 		this.modalService.open(print);
 		this.selectedOrderID = this.selectedOrder.orderid;
-
+		
+        console.log("Start print order :" + this.selectedOrderID)
 		//invoke printOrder api
+		this.orderService.reprintOrder(this.selectedOrderID);
+		console.log(this.selectedOrderID + ",Reprint is done.");
 	}
    
 	onTableDataChange(event){
