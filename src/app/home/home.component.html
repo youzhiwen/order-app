@@ -88,7 +88,7 @@
       <p>Are you sure to cancel order {{selectedOrderID}}? It cannot be undone.</p>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-danger" (click)="modal.close('Ok click')">Yes</button>
+      <button type="button" class="btn btn-danger" (click)="confirmCancelOrder(selectedOrderID)">Yes</button>
       <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">No</button>    
     </div>
   </ng-template>
@@ -101,7 +101,7 @@
       <p>Are you sure to reprint order {{selectedOrderID}}? </p>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-danger" (click)="modal.close('Ok click')">Yes</button>
+      <button type="button" class="btn btn-danger" (click)="confirmPrintOrder(selectedOrderID)">Yes</button>
       <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">No</button>    
     </div>
   </ng-template>

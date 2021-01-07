@@ -87,7 +87,6 @@ export class HomeComponent implements OnInit {
 		
 		this.orderService.getOpenOrders().subscribe(orders => {
 			this.orderList = orders;
-            console.log(this.orderList);
 		});
 	}
 	
@@ -96,7 +95,6 @@ export class HomeComponent implements OnInit {
 		this.orderList = [];
 		this.orderService.getAllFulfilledOrders().subscribe(orders => {
 			this.orderList = orders;
-            console.log(this.orderList);
 		});
 	}
 
@@ -119,17 +117,23 @@ export class HomeComponent implements OnInit {
 
 	cancelOrder(content){
 		this.modalService.open(content);
-		this.selectedOrderID = this.selectedOrder.orderid;
-		
-		this.orderService.cancelOrder(this.selectedOrderID);
-		console.log(this.selectedOrderID + ",Cancel is done.");
+		this.selectedOrderID = this.selectedOrder.orderid;	
+	}
+
+	confirmCancelOrder(selectedOrderID){
+		this.modalService.dismissAll();
+		this.orderService.cancelOrder(selectedOrderID);
+		console.log(selectedOrderID + ",Cancel is done.");
 	}
 
 	printOrder(print){
 		this.modalService.open(print);
-		this.selectedOrderID = this.selectedOrder.orderid;
-		
-        console.log("Start print order :" + this.selectedOrderID)
+		this.selectedOrderID = this.selectedOrder.orderid;		
+        console.log("Start print order :" + this.selectedOrderID);		
+	}
+
+	confirmPrintOrder(selectedOrderID){
+		this.modalService.dismissAll();
 		//invoke printOrder api
 		this.orderService.reprintOrder(this.selectedOrderID);
 		console.log(this.selectedOrderID + ",Reprint is done.");
