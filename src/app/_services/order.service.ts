@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { merge } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from '@environments/environment';
 import { Order } from '@app/_models';
 
 @Injectable({ providedIn: 'root' })
 export class OrderService {
+
+    httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
 
     constructor(private http: HttpClient) {   
     }    
@@ -22,11 +21,18 @@ export class OrderService {
     }
 
     cancelOrder(orderid: number) {
-        return this.http.post(`${environment.apiUrl}/order/cancelOrder`, orderid);
+        console.log("Start to cancel order :" + orderid);
+      
+        return this.http.post(`${environment.apiUrl}/order/cancelOrder/`, orderid, this.httpOptions).subscribe((response:any) => {
+            console.log(response);
+          })
     }
 
     reprintOrder(orderid: number){
-        return this.http.post(`${environment.apiUrl}/order/printOrder`, orderid);
+        console.log("Start to print order :" + orderid);
+        return this.http.post(`${environment.apiUrl}/order/printOrder`, orderid, this.httpOptions).subscribe((response:any) => {
+            console.log(response);
+        })
     }
 
     updateBundles(){
