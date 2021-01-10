@@ -1,7 +1,7 @@
 <!--use a loop/switch to draw relevant SVG-->
 <svg class= "SVG" viewBox="0 0 300 300" >
   <g id="one-B" *ngFor="let rect of rects">
-    <rect attr.x="{{rect.x}}" attr.y="{{rect.y}}" attr.width="{{rect.width}}px" attr.height="{{rect.height}}px" [attr.fill]="fillColor" (click)="changeColor()" />
-    <text class="text" attr.x="{{rect.tx}}px" attr.y="{{rect.ty}}px" dy=".3em" test-anchor="middle">{{rect.name}}</text>
+    <rect attr.x="{{rect.x}}" attr.y="{{rect.y}}" attr.width="{{rect.width}}px" attr.height="{{rect.height}}px" stroke="black" stroke-width="0.5" [attr.fill]="fillColor" (click)="changeColor()" />
+    <text class="text" attr.x="{{rect.tx}}px" attr.y="{{rect.ty}}px" dy=".3em" test-anchor="middle" style="fill:white;font-size:14pt" >{{rect.name}}</text>
   </g>  
 </svg>
