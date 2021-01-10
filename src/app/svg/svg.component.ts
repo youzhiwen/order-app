@@ -19,13 +19,6 @@ export class SvgComponent {
     this.drawGraphicSixBoxes();
   }
 
-  changeColor() {
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256);
-    const b = Math.floor(Math.random() * 256);
-    this.fillColor = `rgb(${r}, ${g}, ${b})`;
-  }
-
   drawGraphic(){
     var oneB = new Rect(
       "B150",
