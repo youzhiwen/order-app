@@ -48,7 +48,9 @@
   width:100px;
   font-size: smaller;
 }
-
+.box,.quantity{
+  font-weight:bold;
+}
 
 .form-label{
   font-size:smaller;
