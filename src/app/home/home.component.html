@@ -3,8 +3,10 @@
     <figure class="text-center">
       <h1> Order List </h1>
     </figure>
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="responsive">
-      <button id="Settings" type="button" class="btn btn-dark me-md-4">Settings</button>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="responsive" >
+      <button type="button" class="btn btn-danger me-md-4" id="cancel" *ngIf='!isOpenOrder'(click)="cancelOrder(content)">Cancel</button>    
+      <button id="Settings" type="button" class="btn btn-dark me-md-2">Settings</button>
+    
     </div>
     <ul class="nav nav-tabs nav-pills">
       <li class="nav-item">
@@ -72,7 +74,6 @@
     </div>
     <div style="text-align: right" *ngIf='!isOpenOrder'>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button type="button" class="btn btn-danger me-md-2" id="cancel" (click)="cancelOrder(content)">Cancel</button>    
         <button type="button" class="btn btn-info me-md-2" id="reprint" (click)="printOrder(print)">Reprint</button>
       </div>
     </div>
