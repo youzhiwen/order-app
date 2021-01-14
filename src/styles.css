@@ -27,27 +27,21 @@
 .text{
   font-size:larger;
 }
-  /* bundle packs */
+/* bundle packs */
   .return-button{
     width: 80px;
     position: relative;
     left:0px;
   }
-  .skip-button{
+.skip-button{
     width: 70px;
   }
 
-.form{
-  width:200px;
-}
 /*packs-area*/
 .packs-area{
   padding-top:40px;
 }
-.input-quantity{
-  width:100px;
-  font-size: smaller;
-}
+
 .box,.quantity{
   font-weight:bold;
 }
