@@ -1,3 +1,4 @@
+import { RecursiveTemplateAstVisitor } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 
 import { Rect } from '@app/_models';
@@ -8,17 +9,28 @@ import { Rect } from '@app/_models';
   styleUrls: ['./svg.component.css']
 })
 export class SvgComponent {
-  fillColor = 'grey';
   rects: Rect[] = [];
+  tag: string;
 
+  fillColor(tag:string)
+  {
+    console.log(this.tag);
+      if (tag === "grey")
+      {
+      return "grey";
+      }
+      else
+      {
+      return "green";
+      }
+  }
   ngOnInit() {
-    //this.drawGraphic();
+    this.drawGraphic();
     //this.drawGraphicTwoBoxes();
     //this.drawGraphicThreeBoxes();
     //this.drawGraphicFourBoxes();
-    this.drawGraphicSixBoxes();
+    //this.drawGraphicSixBoxes();
   }
-
   drawGraphic(){
     var oneB = new Rect(
       "B150",
@@ -27,34 +39,8 @@ export class SvgComponent {
       200,
       165,
       125.25,
-      150
-    );
-    var oneM = new Rect(
-      "MB25",
-      118.25,
-      105.5,
-      62.5,
-      90,
-      125.25,
-      150
-    );
-    var oneC = new Rect(
-      "C150",
-      75,
-      82.5,
       150,
-      135,
-      122,
-      150
-    );
-    var oneS = new Rect(
-      "GM120",
-      87.5,
-      92.5,
-      125,
-      115,
-      122,
-      150
+      "green"
     );
    this.rects.push(oneB);
    //this.rects.push(oneM);
@@ -69,7 +55,8 @@ export class SvgComponent {
       120,
       108,
       125.25,
-      100
+      100,
+      "grey"
     );
     var bottomC = new Rect(
       "F140",
@@ -78,7 +65,8 @@ export class SvgComponent {
       120,
       108,
       125.25,
-      200
+      200,
+      "green"
     );
     var bottomB = new Rect(
       "B150",
@@ -87,7 +75,8 @@ export class SvgComponent {
       160,
       140,
       125.25,
-      200
+      200,
+      "grey"
     );
     this.rects.push(topC);
     //this.rects.push(bottomC);
@@ -102,7 +91,8 @@ export class SvgComponent {
       90,
       81,
       125.25,
-      70
+      70,
+      "grey"
     );
     var middleS = new Rect(
       "GB120",
@@ -111,7 +101,8 @@ export class SvgComponent {
       90,
       81,
       125.25,
-      151
+      151,
+      "green"
     );
     var bottomB = new Rect(
       "B150",
@@ -120,7 +111,8 @@ export class SvgComponent {
       120,
       105,
       125.25,
-      243
+      243,
+      "grey"
     );
     this.rects.push(topS);
     this.rects.push(middleS);
@@ -134,7 +126,8 @@ export class SvgComponent {
       100,
       92,
       75.25,
-      109
+      109,
+      "grey"
     );
     var bottomLeftS = new Rect(
       "GC120",
@@ -143,7 +136,8 @@ export class SvgComponent {
       100,
       92,
       175.25,
-      109
+      109,
+      "green"
     );
     var topRightS = new Rect(
       "Gall120",
@@ -152,7 +146,8 @@ export class SvgComponent {
       100,
       92,
       75.25,
-      209
+      209,
+      "grey"
     );
     var bottomRightS = new Rect(
       "GB120",
@@ -161,7 +156,8 @@ export class SvgComponent {
       100,
       92,
       175.25,
-      209
+      209,
+      "grey"
     );
     this.rects.push(topLeftS);
     this.rects.push(bottomLeftS);
@@ -176,7 +172,8 @@ export class SvgComponent {
       75,
       69,
       90.25,
-      81
+      81,
+      "grey"
     );
     var middleLeftS = new Rect(
       "GC120",
@@ -185,7 +182,8 @@ export class SvgComponent {
       75,
       69,
       90.25,
-      150
+      150,
+      "grey"
     );
     var bottomLeftS = new Rect(
       "GC120",
@@ -194,7 +192,8 @@ export class SvgComponent {
       75,
       69,
       90.25,
-      219
+      219,
+      "green"
     );
     var topRightS = new Rect(
       "Gall120",
@@ -203,7 +202,8 @@ export class SvgComponent {
       75,
       69,
       155.25,
-      81
+      81,
+      "green"
     );
     var middleRightS = new Rect(
       "GB120",
@@ -212,7 +212,8 @@ export class SvgComponent {
       75,
       69,
       155.25,
-      150
+      150,
+      "green"
     );
     var bottomRightS = new Rect(
       "GB120",
@@ -221,7 +222,8 @@ export class SvgComponent {
       75,
       69,
       155.25,
-      219
+      219,
+      "green"
     );
     this.rects.push(topLeftS);
     this.rects.push(middleLeftS);
@@ -230,4 +232,4 @@ export class SvgComponent {
     this.rects.push(middleRightS);
     this.rects.push(bottomRightS);
   }
-}
+} 
