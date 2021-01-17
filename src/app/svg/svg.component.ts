@@ -25,11 +25,11 @@ export class SvgComponent {
       }
   }
   ngOnInit() {
-    this.drawGraphic();
+    //this.drawGraphic();
     //this.drawGraphicTwoBoxes();
     //this.drawGraphicThreeBoxes();
     //this.drawGraphicFourBoxes();
-    //this.drawGraphicSixBoxes();
+    this.drawGraphicSixBoxes();
   }
   drawGraphic(){
     var oneB = new Rect(

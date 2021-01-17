@@ -28,7 +28,7 @@ export class OrderService {
           })
     }
 
-    reprintOrder(orderid: number){
+    reprintOrder(orderid: string){
         console.log("Start to print order :" + orderid);
         return this.http.post(`${environment.apiUrl}/order/printOrder`, orderid, this.httpOptions).subscribe((response:any) => {
             console.log(response);

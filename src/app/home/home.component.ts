@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
 	checkedOrderList: any;
 	isOpenOrder = true;
 	checklist:any;
-	selectedOrderID:number;
+	selectedOrderID:string;
 	selectedOrder: Order;
 	isMasterSel:boolean;
 
@@ -117,7 +117,7 @@ export class HomeComponent implements OnInit {
 
 	cancelOrder(content){
 		this.modalService.open(content);
-		this.selectedOrderID = this.selectedOrder.orderid;	
+		this.selectedOrderID = this.selectedOrder.order_id;	
 	}
 
 	confirmCancelOrder(selectedOrderID){
@@ -128,7 +128,7 @@ export class HomeComponent implements OnInit {
 
 	printOrder(print){
 		this.modalService.open(print);
-		this.selectedOrderID = this.selectedOrder.orderid;		
+		this.selectedOrderID = this.selectedOrder.order_id;		
         console.log("Start print order :" + this.selectedOrderID);		
 	}
 
