@@ -76,9 +76,15 @@ export class HomeComponent implements OnInit {
 		this.checkedOrderList = JSON.stringify(this.checkedOrderList);
 	}
 	
-	goBundle(checkedOrderList: any) {     
+	ifCheckedAndGoBundle(checkedOrderList: any, message:string) {     
 
-        this.router.navigate(['/bundle'],{queryParams:checkedOrderList});
+        if(this.selectedOrder){
+			this.selectedOrderID = this.selectedOrder.orderId;
+			this.router.navigate(['/bundle'],{queryParams:checkedOrderList});
+		}
+		else{
+			this.modalService.open(message);
+		}
 	}
 
 	getOpenOrders() {        
@@ -115,9 +121,17 @@ export class HomeComponent implements OnInit {
         return productCSS;
 	}
 
-	cancelOrder(content){
-		this.modalService.open(content);
-		this.selectedOrderID = this.selectedOrder.orderId;	
+	ifCheckedAndCancel(content:string , message:string)
+	{
+		
+		if(this.selectedOrder){
+			this.selectedOrderID = this.selectedOrder.orderId;
+			this.modalService.open(content);
+		}
+		else
+		{
+		this.modalService.open(message);
+		}
 	}
 
 	confirmCancelOrder(selectedOrderID){
@@ -126,17 +140,18 @@ export class HomeComponent implements OnInit {
 		console.log(selectedOrderID + ",Cancel is done.");
 	}
 
-	printOrder(print){
+	ifCheckedAndPrint(print:string , message:string)
+	{
 		
 		if(this.selectedOrder){
 			this.selectedOrderID = this.selectedOrder.orderId;
 			this.modalService.open(print);				
 			console.log("Start print order :" + this.selectedOrderID);
-		}else{
-			console.log("You haven't selected any order.");
+		}else
+		{console.log(this.selectedOrderID);
+		this.modalService.open(message);
 		}
-				
-	}
+	  }
 
 	confirmPrintOrder(selectedOrderID){
 		this.modalService.dismissAll();

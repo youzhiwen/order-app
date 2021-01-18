@@ -4,7 +4,7 @@
       <h1> Order List </h1>
     </figure>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end" id="responsive" >
-      <button type="button" class="btn btn-danger me-md-4" id="cancel" *ngIf='!isOpenOrder'(click)="cancelOrder(content)">Cancel</button>    
+      <button type="button" class="btn btn-danger me-md-4" id="cancel" *ngIf='!isOpenOrder'(click)="ifCheckedAndCancel(content, message)">Cancel</button>    
       <button id="Settings" type="button" class="btn btn-dark me-md-2">Settings</button>
     
     </div>
@@ -70,16 +70,26 @@
 
 
     <div style="text-align: right" *ngIf='isOpenOrder'>
-    <button type="button" class="btn btn-primary go" id="Go" (click)="goBundle(checkedOrderList)">Go</button>
+    <button type="button" class="btn btn-primary go" id="Go" (click)="ifCheckedAndGoBundle(checkedOrderList,message)">Go</button>
     </div>
     <div style="text-align: right" *ngIf='!isOpenOrder'>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button type="button" class="btn btn-info me-md-2" id="reprint" (click)="printOrder(print)">Reprint</button>
+        <button type="button" class="btn btn-info me-md-2" id="reprint" (click)="ifCheckedAndPrint(print,message)">Reprint</button>
       </div>
     </div>
   </div>
 
-
+  <ng-template #message let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Hi there!</h4>
+    </div>
+    <div class="modal-body">
+      <p>Please select at least one order! </p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Ok</button>
+    </div>
+    </ng-template>
 
   <ng-template #content let-modal>
     <div class="modal-header">
