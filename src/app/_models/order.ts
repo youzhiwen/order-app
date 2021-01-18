@@ -1,5 +1,5 @@
 ﻿export class Order {
-    order_id: string;
+	orderId: string;
     orderdate: string;
 	customer: string;
 	deliveryaddress1: string;
@@ -12,10 +12,10 @@
 	bundles: string[];
 	isSelected: boolean;
 	
-	constructor(order_id: string, orderdate: string, customer: string, deliveryaddress1: string, 
+	constructor(orderId: string, orderdate: string, customer: string, deliveryaddress1: string, 
 		deliveryaddress2: string, deliveryaddress3: string, deliverycity: string, deliverycode: number, 
 		bundled: boolean, status: string, bundles: string[], isSelected: boolean,){
-		this.order_id = order_id;
+		this.orderId = orderId;
 		this.orderdate = orderdate;
 		this.customer = customer;
 		this.deliveryaddress1 = deliveryaddress1;

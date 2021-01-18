@@ -117,7 +117,7 @@ export class HomeComponent implements OnInit {
 
 	cancelOrder(content){
 		this.modalService.open(content);
-		this.selectedOrderID = this.selectedOrder.order_id;	
+		this.selectedOrderID = this.selectedOrder.orderId;	
 	}
 
 	confirmCancelOrder(selectedOrderID){
@@ -127,9 +127,15 @@ export class HomeComponent implements OnInit {
 	}
 
 	printOrder(print){
-		this.modalService.open(print);
-		this.selectedOrderID = this.selectedOrder.order_id;		
-        console.log("Start print order :" + this.selectedOrderID);		
+		
+		if(this.selectedOrder){
+			this.selectedOrderID = this.selectedOrder.orderId;
+			this.modalService.open(print);				
+			console.log("Start print order :" + this.selectedOrderID);
+		}else{
+			console.log("You haven't selected any order.");
+		}
+				
 	}
 
 	confirmPrintOrder(selectedOrderID){
