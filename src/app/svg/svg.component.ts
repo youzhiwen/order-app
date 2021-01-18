@@ -14,7 +14,6 @@ export class SvgComponent {
 
   fillColor(tag:string)
   {
-    console.log(this.tag);
       if (tag === "grey")
       {
       return "grey";
