@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
 
 	}
 	
-	/*clickedRow(order: Order, i: number){
+	OnClickRow(order: Order, i: number){
 		this.selectedOrder = order;
 		console.log(this.selectedOrder)
 
@@ -64,9 +64,7 @@ export class HomeComponent implements OnInit {
 			  this.isMasterSel = false;
 			}
 		return this.orderList[i].isSelected;
-
 	}
-	*/
 
 	checkUncheckAll() {
 		for (var i = 0; i < this.orderList.length; i++) {
@@ -85,6 +83,8 @@ export class HomeComponent implements OnInit {
 		  })
 		this.getCheckedOrderList();
 	}
+
+	
 
 	getCheckedOrderList(){
 		this.checkedOrderList = [];
@@ -109,6 +109,12 @@ export class HomeComponent implements OnInit {
 	getOpenOrders() {        
 		this.isOpenOrder = true;
 		this.orderList = [];
+		//access service from java server.
+		this.orderService.getOpenOrders().subscribe(orders => {
+			this.orderList = orders;
+		});
+		//ends here
+
 		/*
 		//below is for test---
 		this.orderList =[
@@ -126,13 +132,18 @@ export class HomeComponent implements OnInit {
 		];
 		//---to here!
 		*/
-		this.orderService.getOpenOrders().subscribe(orders => {
-			this.orderList = orders;
-		});
 	}
+
+
 	getFulfilledOrders(){
 		this.isOpenOrder = false;
 		this.orderList = [];
+		//access service from java server.
+		this.orderService.getAllFulfilledOrders().subscribe(orders => {
+			this.orderList = orders;
+		});
+		//ends here
+
 		/*
 		//below is for test---
 		this.orderList =[
@@ -151,9 +162,6 @@ export class HomeComponent implements OnInit {
 		];
 				//---to here!
 				*/
-		this.orderService.getAllFulfilledOrders().subscribe(orders => {
-			this.orderList = orders;
-		});
 	}
 
 	displayProducts(product: string){

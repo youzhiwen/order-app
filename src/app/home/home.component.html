@@ -40,7 +40,7 @@
       itemsPerPage: tableSize,
       currentPage: page,
       totalItems: count}; let i = index">
-		  <tr>
+		  <tr (click)="OnClickRow(order,i)">
         <td *ngIf='isOpenOrder'>
           <input class="form-check-input" type="checkbox" [(ngModel)]="order.isSelected" value="{{order.orderId}}" id="flexCheckDefault{{i}}" (change)="isAllSelected()">
         </td>
