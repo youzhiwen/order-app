@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
 
 	}
 	
-	clickedRow(order: Order, i: number){
+	/*clickedRow(order: Order, i: number){
 		this.selectedOrder = order;
 		console.log(this.selectedOrder)
 
@@ -49,7 +49,6 @@ export class HomeComponent implements OnInit {
 			this.element = document.getElementById('flexRadioDefault'+i) as HTMLInputElement;
 			this.element.checked = true;
 		}
-
 		// if all orders are selected, isMasterSel will be checked
 		let k = 0;
 		for (let j = 0; j < this.orderList.length; j++) {
@@ -67,6 +66,7 @@ export class HomeComponent implements OnInit {
 		return this.orderList[i].isSelected;
 
 	}
+	*/
 
 	checkUncheckAll() {
 		for (var i = 0; i < this.orderList.length; i++) {
@@ -85,29 +85,6 @@ export class HomeComponent implements OnInit {
 		  })
 		this.getCheckedOrderList();
 	}
-
-	checked(i: number) {
-		this.element = document.getElementById('flexCheckDefault'+i) as HTMLInputElement;
-		this.element.checked = this.element.checked?false:true;
-		let k = 0;
-		for (let j = 0; j < this.orderList.length; j++) {
-		  if (this.element.checked === true) 
-		  {
-			k++;
-			if (k === this.orderList.length) {
-			  this.isMasterSel = true;
-			}
-
-		  }
-				if (this.element.checked === false) {
-				  this.isMasterSel = false;
-				}
-				return this.element.checked;
-		  }
-		  
-		//this.isAllSelected();
-	  }
-
 
 	getCheckedOrderList(){
 		this.checkedOrderList = [];
@@ -132,6 +109,7 @@ export class HomeComponent implements OnInit {
 	getOpenOrders() {        
 		this.isOpenOrder = true;
 		this.orderList = [];
+		/*
 		//below is for test---
 		this.orderList =[
 		    {orderId: 'D01344', orderdate: '23-12-2020', customer: 'Alice', deliveryaddress1:'343adsfa4', 
@@ -147,13 +125,15 @@ export class HomeComponent implements OnInit {
 			bundled: true, status: '00', bundles: [], isSelected: false},
 		];
 		//---to here!
-		//this.orderService.getOpenOrders().subscribe(orders => {
-		//	this.orderList = orders;
-		//});
+		*/
+		this.orderService.getOpenOrders().subscribe(orders => {
+			this.orderList = orders;
+		});
 	}
 	getFulfilledOrders(){
 		this.isOpenOrder = false;
 		this.orderList = [];
+		/*
 		//below is for test---
 		this.orderList =[
 			
@@ -169,9 +149,11 @@ export class HomeComponent implements OnInit {
 			deliveryaddress2: '3434asdf', deliveryaddress3: 'sadfa', deliverycity: 'asdfd', deliverycode: 45, 
 			bundled: true, status: '01', bundles: [], isSelected: false},
 		];
-		//this.orderService.getAllFulfilledOrders().subscribe(orders => {
-			//this.orderList = orders;
-		//});
+				//---to here!
+				*/
+		this.orderService.getAllFulfilledOrders().subscribe(orders => {
+			this.orderList = orders;
+		});
 	}
 
 	displayProducts(product: string){

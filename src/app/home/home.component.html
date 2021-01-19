@@ -40,9 +40,9 @@
       itemsPerPage: tableSize,
       currentPage: page,
       totalItems: count}; let i = index">
-		  <tr (click)="clickedRow(order, i)">
+		  <tr>
         <td *ngIf='isOpenOrder'>
-          <input class="form-check-input" type="checkbox" [(ngModel)]="order.isSelected" value="{{order.orderId}}" id="flexCheckDefault{{i}}" (change)="checked(i)">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="order.isSelected" value="{{order.orderId}}" id="flexCheckDefault{{i}}" (change)="isAllSelected()">
         </td>
         <td *ngIf='!isOpenOrder'>
             <input class="form-check-input" type="radio" name="flexRadioDefault" value="{{order.orderId}}" id="flexRadioDefault{{i}}" #fulfilledOrder{{i}}>
